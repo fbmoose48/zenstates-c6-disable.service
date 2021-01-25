@@ -1,0 +1,13 @@
+[Unit]
+Description=Disable c6 powerstate
+After = network.target
+
+[Service]
+Type = simple
+PIDFile = /run/zenstates.pid
+ExecStart = zenstates --c6-disable
+Restart = on-failure
+ExecReload = /sbin/start-stop-daemon #determine if needed
+
+[Install]
+WantedBy = multi-user.target
